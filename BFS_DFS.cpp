@@ -27,7 +27,34 @@ void dfs_postorder(Node* root) {
     dfs_postorder(root->right);
     cout << root->value << " ";
 }
+BFS:
+struct Node
+{
+    int val;
+    vector<Node*> children;
+};
 
+void bfs(Node* root)
+{
+    if (root == nullptr)
+        return;
+
+    queue<Node*> q;
+    q.push(root);
+
+    while (!q.empty())
+    {
+        Node* current = q.front();
+        q.pop();
+
+        cout << current->val << " ";
+
+        for (Node* child : current->children)
+        {
+            q.push(child);
+        }
+    }
+}
 BFS-najprostszy:
 int height(Node* root) {
     if (root == nullptr) return 0;
